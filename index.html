@@ -4,33 +4,18 @@
         <link rel="stylesheet" href="mainpage.css">
     </head>
     <body>
-        <div class="stuckside">
-            yuh
+      <div class="top">
+        <a class="big">Visiometrix Digital Creations</a>
+      </div>
+        <div class="mainpart">
+            <div class = "me">
+              <br>
+              our story
+              <br>
+              portfolio
+              <br>
+              contact us
+            </div>
+            <div class="scroller"><img src="img1.png">˙</div>
         </div>
-        <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-<img class="mySlides" src="wireframe.png">
-<img class="mySlides" src="img2.png">
-<img class="mySlides" src="img_mountains.jpg">
-<img class="mySlides" src="img_forest.jpg">
-    </body>
-    <script>
-        var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
-    </script>
 </html>

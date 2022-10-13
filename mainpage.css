@@ -1,5 +1,44 @@
-.stuckside {
-    position:aboslute;
-    top:5vh;
-    background-color:orange;
+.top{
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    height: 20vh;
+    background-color:blanchedalmond;
+    text-align: center;
+}
+.mainpart {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 30vw 70vw;
+    grid-auto-rows: minmax(100px, auto);
+    min-height: 80 vh;
+}
+.me {
+    grid-column-start:1;
+    grid-column-end:1;
+    background-color:blanchedalmond;
+    text-align: center;
+    align-items:center;
+    justify-content: center;
+}
+.scroller{
+    overflow:scroll;
+    overflow-x: hidden;
+    border: 5px darkslategrey solid;
+}
+.scrollingpngs{
+    max-width:100%;
+}
+body {
+    overflow: hidden;
+    background-color:blanchedalmond;
+}
+.big{
+    font-size: 35px;
+}
+.story{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60vw;
+    text-align: center;
+    border: 5px darkslategrey solid;
 }
