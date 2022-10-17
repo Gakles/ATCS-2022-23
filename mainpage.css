@@ -50,3 +50,15 @@ a {
     overflow-x: hidden;
     max-width:70vw;
 }
+.portpics {
+    display: inline-block;
+    max-height:15vh;
+}
+.home {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: darkslategray;
+    text-align: center;
+}
