@@ -20,7 +20,8 @@
     justify-content: center;
 }
 .scroller{
-    max-width:20px;
+    max-width:100%;
+    width:100%;
 }
 body {
     overflow: hidden;
@@ -47,5 +48,5 @@ a {
     border: 5px darkslategrey solid;
     overflow:scroll;
     overflow-x: hidden;
-    max-width:50vw;
+    max-width:70vw;
 }
