@@ -9,7 +9,6 @@
     height: 80vh;
     display: grid;
     grid-template-columns: 30vw 70vw;
-    grid-auto-rows: minmax(100px, auto);
     min-height: 80 vh;
 }
 .me {
@@ -21,12 +20,7 @@
     justify-content: center;
 }
 .scroller{
-    overflow:scroll;
-    overflow-x: hidden;
-    border: 5px darkslategrey solid;
-}
-.scrollingpngs{
-    max-width:100%;
+    max-width:20px;
 }
 body {
     overflow: hidden;
@@ -34,6 +28,7 @@ body {
 }
 .big{
     font-size: 35px;
+    color:darkslategray;
 }
 .story{
     margin-left: auto;
@@ -41,4 +36,16 @@ body {
     width: 60vw;
     text-align: center;
     border: 5px darkslategrey solid;
+    color:darkslategray;
+}
+a {
+    color:darkslategray;
+}
+.secondhalf{
+    grid-column-start:2;
+    grid-column-end: 2;
+    border: 5px darkslategrey solid;
+    overflow:scroll;
+    overflow-x: hidden;
+    max-width:50vw;
 }
