@@ -24,7 +24,6 @@
     width:100%;
 }
 body {
-    overflow: hidden;
     background-color:blanchedalmond;
 }
 .big{
@@ -42,14 +41,14 @@ body {
 a {
     color:darkslategray;
 }
-.secondhalf{
+/*.secondhalf{
     grid-column-start:2;
     grid-column-end: 2;
     border: 5px darkslategrey solid;
     overflow:scroll;
     overflow-x: hidden;
     max-width:70vw;
-}
+}*/
 .portpics {
     display: inline-block;
     max-height:15vh;
@@ -72,4 +71,18 @@ a {
 .useless {
     
     max-height:20vh;
+}
+.container-fluid {
+    width: 100%;
+    padding-right: 0px; 
+    padding-left: 0px; 
+    /*margin-right: auto;
+    //margin-left: auto;*/
+}
+.carrryallsell{
+    width:100%;
+    height:100%;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
 }
