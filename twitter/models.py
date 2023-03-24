@@ -37,6 +37,16 @@ class Follower(Base):
 
 class Tweet(Base):
     # TODO: Complete the class
+    __tablename__ = "tweets"
+    id = Column("id", INTEGER, primary_key=True)
+    username_id = Column("username_id", ForeignKey("users.id"))
+    tag_id = Column("tag_id", ForeignKey("tags.id"))
+    date = Column("date", TEXT)
+    time = Column("time", TEXT)
+    date = Column("date", TEXT)
+    time = Column("time", TEXT)
+    username = relationship("User", back_populates="tweets")
+    tweettag = relationship("TweetTag", back_populates="tags")
     pass
 
 class Tag(Base):
