@@ -8,13 +8,14 @@ from sqlalchemy import ForeignKey, Column, INTEGER, TEXT, DATETIME
 from sqlalchemy.orm import relationship
 from database import Base
 
+
 class User(Base):
     __tablename__ = "users"
 
     # Columns
     username = Column("username", TEXT, primary_key=True)
     password = Column("password", TEXT, nullable=False)
-
+    tweets = relationship("Tweet", back_populates="user")
     following = relationship("User", 
                              secondary="followers",
                              primaryjoin="User.username==Follower.follower_id",
@@ -40,19 +41,26 @@ class Tweet(Base):
     __tablename__ = "tweets"
     id = Column("id", INTEGER, primary_key=True)
     username_id = Column("username_id", ForeignKey("users.id"))
-    tag_id = Column("tag_id", ForeignKey("tags.id"))
     date = Column("date", TEXT)
     time = Column("time", TEXT)
     date = Column("date", TEXT)
     time = Column("time", TEXT)
     username = relationship("User", back_populates="tweets")
-    tweettag = relationship("TweetTag", back_populates="tags")
+    tags = relationship("Tag", secondary="tweet_tags", back_populates="tweets")
     pass
 
 class Tag(Base):
     # TODO: Complete the class
+    __tablename__ = "tag"
+    id = Column("id", INTEGER, primary_key=True)
+    content = Column("content", TEXT)
+    s = relationship("Tag", secondary="tweet_tags", back_populates="tweets")
     pass
 
 class TweetTag(Base):
     # TODO: Complete the class
+    __tablename__ = "tweettag"
+    id = Column("id", INTEGER, primary_key=True)
+    tweet_id = Column(INTEGER, ForeignKey('tweet.id'), primary_key=True)
+    tag_id = Column(INTEGER, ForeignKey('tag.id'), primary_key=True)
     pass
