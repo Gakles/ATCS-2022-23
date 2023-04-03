@@ -50,10 +50,9 @@ class Tweet(Base):
     user = relationship("User", back_populates = "tweets")
     tags = relationship("Tag", secondary="tweettags", back_populates="tweets")
 
-    def __init__(self, content, timestamp, tags, username):
+    def __init__(self, content, timestamp, username):
         self.content = content
         self.timestamp = timestamp
-        self.tags = tags
         self.username = username
 
     def __repr__(self):
@@ -79,3 +78,7 @@ class TweetTag(Base):
     id = Column("id", INTEGER, primary_key=True)
     tweet_id = Column(INTEGER, ForeignKey('tweets.id'))
     tag_id = Column(INTEGER, ForeignKey('tags.id'))
+
+    def __init__(self, tweet_id, tag_id):
+        self.tweet_id = tweet_id
+        self.tag_id = tag_id
