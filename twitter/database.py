@@ -26,7 +26,8 @@ engine = create_engine("sqlite:///twitter.db", echo=False)
 # A Scoped Session helps us when creating our apps
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
-                                         bind=engine))
+                                         bind=engine,
+                                         expire_on_commit=False))
 
 # Base is the class we will extend
 Base = declarative_base()
