@@ -170,14 +170,13 @@ class Twitter:
 
 
     def search_by_tag(self):
-        tag = input("Tag: ")
-        check_tag = db_session.query(Tag.id).where(Tag.content == tag)
-        if check_tag:
-            tagged_tweets = db_session.query(TweetTag.tweet_id).where(Tweet.id == check_tag)
-            tweets = db_session.query(Tweet).where(Tweet.id == tagged_tweets)
-            self.print_tweets(tweets)
-        else:
-            print("There is no tweets with this tag.")
+        desired_tag = input("\nWhat tag do you want to search by: ")
+        tag_ids = []
+        tag_instances = db_session.query(Tag).where(Tag.content==desired_tag).all()
+        for tag in tag_instances:
+            tag_ids.append(tag.id)
+        tweets = db_session.query(Tweet).where((Tweet.id==TweetTag.tweet_id) & (TweetTag.tagid.in_(tag_ids))).all()
+        self.print_tweets(tweets)
 
 
     """
