@@ -129,9 +129,7 @@ class Twitter:
         message = input("Create Tweet: ")
         tags = input("Enter your tags separated by spaces: ").split()
         for tag in tags:
-            print(tag)
             newTag = Tag(tag)
-            print(newTag)
             db_session.add(newTag)
         db_session.commit()
         new_tweet = Tweet(message, datetime.now(), self.current_user.username)
