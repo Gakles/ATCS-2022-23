@@ -56,7 +56,10 @@ class Tweet(Base):
         self.username = username
 
     def __repr__(self):
-        return str(self.username) + "\n" + self.content + "\n" + str(self.tags) + "\n" + self.date
+        tweet = str(self.username) + "\n" + self.content + "\n" 
+        for tag in self.tags:
+            tweet = tweet + repr(tag) + " "
+        return tweet+ "\n" + self.timestamp
 
 
 class Tag(Base):
@@ -76,5 +79,9 @@ class TweetTag(Base):
     __tablename__ = "tweettags"
     # TODO: Complete the class
     id = Column("id", INTEGER, primary_key=True)
-    tweet_id = Column(INTEGER, ForeignKey('tweets.id'))
-    tag_id = Column(INTEGER, ForeignKey('tags.id'))
+    tweet_id = Column("tweet_id", INTEGER, ForeignKey('tweets.id'))
+    tag_id = Column("tag_id", INTEGER, ForeignKey('tags.id'))
+
+    def __init__(self, tweet_id, tag_id):
+        self.tweet_id = tweet_id
+        self.tag_id = tweet_id

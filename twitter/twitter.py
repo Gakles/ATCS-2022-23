@@ -128,18 +128,31 @@ class Twitter:
     def tweet(self):
         message = input("Create Tweet: ")
         tags = input("Enter your tags separated by spaces: ").split()
-        for tag in tags:
-            newTag = Tag(tag)
-            db_session.add(newTag)
-        db_session.commit()
+        tags = [Tag(content = tag) for tag in tags]
         new_tweet = Tweet(message, datetime.now(), self.current_user.username)
         db_session.add(new_tweet)
         db_session.commit()
+        alltags = db_session.query(Tag).all()
+        for tag in tags:
+            exists = False
+            for i in alltags:
+                if i.content == tag:
+                    exists = True
+                    tag_id = i.id
+                if exists:
+                    db_session.add(TweetTag(new_tweet.id, tag_id))
+                    db_session.commit()
+                else:
+                    newTag = Tag(tag)
+                    db_session.commit()
+                    db_session.add(TweetTag(new_tweet.id, newTag.id))
+                    db_session.commit()
+
 
     
     def view_my_tweets(self):
-        my_tweets = db_session.query(Tweet).where(Tweet.username == self.current_user.username)
-        self.print_tweets(self.current_user, my_tweets)
+        my_tweets = db_session.query(Tweet).where(Tweet.user == self.current_user)
+        self.print_tweets(my_tweets)
     
     """
     Prints the 5 most recent tweets of the 
